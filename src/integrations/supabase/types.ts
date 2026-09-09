@@ -14,7 +14,166 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contagem_itens: {
+        Row: {
+          codigo: number
+          contagem_id: string
+          created_at: string
+          id: string
+          quantidade: number
+          valor_planilha: number
+        }
+        Insert: {
+          codigo: number
+          contagem_id: string
+          created_at?: string
+          id?: string
+          quantidade: number
+          valor_planilha: number
+        }
+        Update: {
+          codigo?: number
+          contagem_id?: string
+          created_at?: string
+          id?: string
+          quantidade?: number
+          valor_planilha?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contagem_itens_contagem_id_fkey"
+            columns: ["contagem_id"]
+            isOneToOne: false
+            referencedRelation: "contagens"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      contagens: {
+        Row: {
+          created_at: string
+          data: string
+          editado: boolean
+          enviado_em: string | null
+          erro: string | null
+          id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          data: string
+          editado?: boolean
+          enviado_em?: string | null
+          erro?: string | null
+          id?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          data?: string
+          editado?: boolean
+          enviado_em?: string | null
+          erro?: string | null
+          id?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      itens: {
+        Row: {
+          categoria: string
+          codigo: number
+          created_at: string
+          descricao: string
+          ordem: number
+        }
+        Insert: {
+          categoria: string
+          codigo: number
+          created_at?: string
+          descricao: string
+          ordem: number
+        }
+        Update: {
+          categoria?: string
+          codigo?: number
+          created_at?: string
+          descricao?: string
+          ordem?: number
+        }
+        Relationships: []
+      }
+      lancamento_itens: {
+        Row: {
+          codigo: number
+          created_at: string
+          id: string
+          lancamento_id: string
+          quantidade: number
+        }
+        Insert: {
+          codigo: number
+          created_at?: string
+          id?: string
+          lancamento_id: string
+          quantidade: number
+        }
+        Update: {
+          codigo?: number
+          created_at?: string
+          id?: string
+          lancamento_id?: string
+          quantidade?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lancamento_itens_lancamento_id_fkey"
+            columns: ["lancamento_id"]
+            isOneToOne: false
+            referencedRelation: "lancamentos"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lancamentos: {
+        Row: {
+          created_at: string
+          data: string
+          editado: boolean
+          enviado_em: string | null
+          erro: string | null
+          id: string
+          linhas: number[]
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          data: string
+          editado?: boolean
+          enviado_em?: string | null
+          erro?: string | null
+          id?: string
+          linhas?: number[]
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          data?: string
+          editado?: boolean
+          enviado_em?: string | null
+          erro?: string | null
+          id?: string
+          linhas?: number[]
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
