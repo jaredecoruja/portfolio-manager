@@ -55,6 +55,6 @@ Se o envio à planilha falhar, o lançamento fica salvo no app marcado como "nã
 
 - Lovable Cloud para guardar lançamentos, itens e contagens (tabelas `lancamentos`, `lancamento_itens`, `contagens`), com RLS e grants.
 - Catálogo dos 82 itens semeado por migração (código, descrição, categoria), a partir da aba ALMOXARIFADO.
-- Conexão Google Sheets do workspace ligada ao projeto; toda a escrita/leitura da planilha ocorre em server functions do TanStack Start (`values:append`-like: busca a próxima linha vazia e escreve o intervalo A:G), nunca no navegador.
+- Conexão Google Sheets do workspace ligada ao projeto; toda a leitura/escrita da planilha ocorre em server functions do TanStack Start (busca a próxima linha vazia e escreve as faixas A:E e G na aba de saídas; lê B/H e escreve I na aba ALMOXARIFADO), nunca no navegador.
 - Exclusão na planilha: as linhas gravadas guardam seu número; a remoção limpa essas linhas via `batchUpdate` (deleteDimension) para não deixar buracos.
 - Interface mobile-first em português, tema escuro com dourado de chopp, tokens no design system.
