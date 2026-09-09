@@ -32,7 +32,10 @@ Se o envio à planilha falhar, o lançamento fica salvo no app marcado como "nã
 
 ## Contagem
 
-Mesmos controles (categorias, −/+, data). Grava a contagem por item e data no app; uma contagem por item/data (regravar substitui a anterior). Aparece no relatório em aba separada, com totais por categoria.
+- Ao abrir, mostra a **contagem atual** como espelho da aba `ALMOXARIFADO`: descrição (coluna B) e estoque disponível (coluna H), somente leitura, com busca e agrupamento por categoria.
+- No canto superior direito, botão **LANÇAR CONTAGEM**, que abre uma lista igual à de Retiradas (categorias expansíveis, −/+, quantidade digitável).
+- Ao confirmar, a quantidade contada de cada item é gravada na **coluna I** da linha correspondente do item na aba `ALMOXARIFADO`; nenhuma outra coluna é alterada.
+- O espelho é recarregado após o lançamento.
 
 ## Relatório
 
