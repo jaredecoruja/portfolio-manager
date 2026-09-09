@@ -4,13 +4,13 @@ App de controle de retiradas e contagem de bebidas, com envio automático para a
 
 ## Tela inicial
 
-Quatro botões grandes, em português, prontos para uso no celular:
+Apenas dois botões grandes, em português, prontos para uso no celular:
 - **RETIRADAS** — lançar saídas de produtos
 - **CONTAGEM** — registrar a contagem física por item
-- **RELATÓRIO** — ver, editar, reenviar e excluir lançamentos
-- **ADM** — área protegida por senha
 
-## Catálogo (usado em RETIRADAS e CONTAGEM)
+Dentro de **RETIRADAS**: botão **RELATÓRIO** no canto superior direito e **ADM** no canto inferior esquerdo.
+
+## Catálogo (usado em RETIRADAS e LANÇAR CONTAGEM)
 
 - Os 82 itens (códigos 1 a 82) lidos da planilha, agrupados em categorias que abrem e fecham: Cerveja 600ml, Cerveja litro, Long necks, Energético, Refrigerante, Águas, Destilados, Vinhos, Espumantes, Whisky.
 - Cada item tem botões **−/+** e campo de quantidade digitável.
