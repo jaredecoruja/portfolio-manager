@@ -4,13 +4,13 @@ App de controle de retiradas e contagem de bebidas, com envio automático para a
 
 ## Tela inicial
 
-Quatro botões grandes, em português, prontos para uso no celular:
+Apenas dois botões grandes, em português, prontos para uso no celular:
 - **RETIRADAS** — lançar saídas de produtos
 - **CONTAGEM** — registrar a contagem física por item
-- **RELATÓRIO** — ver, editar, reenviar e excluir lançamentos
-- **ADM** — área protegida por senha
 
-## Catálogo (usado em RETIRADAS e CONTAGEM)
+Dentro de **RETIRADAS**: botão **RELATÓRIO** no canto superior direito e **ADM** no canto inferior esquerdo.
+
+## Catálogo (usado em RETIRADAS e LANÇAR CONTAGEM)
 
 - Os 82 itens (códigos 1 a 82) lidos da planilha, agrupados em categorias que abrem e fecham: Cerveja 600ml, Cerveja litro, Long necks, Energético, Refrigerante, Águas, Destilados, Vinhos, Espumantes, Whisky.
 - Cada item tem botões **−/+** e campo de quantidade digitável.
@@ -32,7 +32,10 @@ Se o envio à planilha falhar, o lançamento fica salvo no app marcado como "nã
 
 ## Contagem
 
-Mesmos controles (categorias, −/+, data). Grava a contagem por item e data no app; uma contagem por item/data (regravar substitui a anterior). Aparece no relatório em aba separada, com totais por categoria.
+- Ao abrir, mostra a **contagem atual** como espelho da aba `ALMOXARIFADO`: descrição (coluna B) e estoque disponível (coluna H), somente leitura, com busca e agrupamento por categoria.
+- No canto superior direito, botão **LANÇAR CONTAGEM**, que abre uma lista igual à de Retiradas (categorias expansíveis, −/+, quantidade digitável).
+- Ao confirmar, a quantidade contada de cada item é gravada na **coluna I** da linha correspondente do item na aba `ALMOXARIFADO`; nenhuma outra coluna é alterada.
+- O espelho é recarregado após o lançamento.
 
 ## Relatório
 
@@ -40,7 +43,7 @@ Mesmos controles (categorias, −/+, data). Grava a contagem por item e data no 
 - Abrir um lançamento mostra os itens e quantidades.
 - **Editar**: mudar quantidades, adicionar ou remover itens; ao salvar, o lançamento é marcado como **editado / pendente de reenvio** (sinalização visível).
 - **Reenviar**: apaga as linhas antigas na planilha e grava as novas.
-- Abas separadas para Retiradas e Contagens.
+- Abas separadas para Retiradas e Contagens lançadas.
 
 ## ADM
 
@@ -52,6 +55,6 @@ Mesmos controles (categorias, −/+, data). Grava a contagem por item e data no 
 
 - Lovable Cloud para guardar lançamentos, itens e contagens (tabelas `lancamentos`, `lancamento_itens`, `contagens`), com RLS e grants.
 - Catálogo dos 82 itens semeado por migração (código, descrição, categoria), a partir da aba ALMOXARIFADO.
-- Conexão Google Sheets do workspace ligada ao projeto; toda a escrita/leitura da planilha ocorre em server functions do TanStack Start (`values:append`-like: busca a próxima linha vazia e escreve o intervalo A:G), nunca no navegador.
+- Conexão Google Sheets do workspace ligada ao projeto; toda a leitura/escrita da planilha ocorre em server functions do TanStack Start (busca a próxima linha vazia e escreve as faixas A:E e G na aba de saídas; lê B/H e escreve I na aba ALMOXARIFADO), nunca no navegador.
 - Exclusão na planilha: as linhas gravadas guardam seu número; a remoção limpa essas linhas via `batchUpdate` (deleteDimension) para não deixar buracos.
 - Interface mobile-first em português, tema escuro com dourado de chopp, tokens no design system.
