@@ -43,7 +43,7 @@ Se o envio à planilha falhar, o lançamento fica salvo no app marcado como "nã
 - Abrir um lançamento mostra os itens e quantidades.
 - **Editar**: mudar quantidades, adicionar ou remover itens; ao salvar, o lançamento é marcado como **editado / pendente de reenvio** (sinalização visível).
 - **Reenviar**: apaga as linhas antigas na planilha e grava as novas.
-- Abas separadas para Retiradas e Contagens.
+- Abas separadas para Retiradas e Contagens lançadas.
 
 ## ADM
 
