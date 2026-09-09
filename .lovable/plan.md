@@ -35,6 +35,7 @@ Se o envio à planilha falhar, o lançamento fica salvo no app marcado como "nã
 - Ao abrir, mostra a **contagem atual** como espelho da aba `ALMOXARIFADO`: descrição (coluna B) e estoque disponível (coluna H), somente leitura, com busca e agrupamento por categoria.
 - No canto superior direito, botão **LANÇAR CONTAGEM**, que abre uma lista igual à de Retiradas (categorias expansíveis, −/+, quantidade digitável).
 - Ao confirmar, a quantidade contada de cada item é gravada na **coluna I** da linha correspondente do item na aba `ALMOXARIFADO`, linhas 2 a 83 (códigos 1 a 82); nenhuma outra coluna é alterada.
+- Itens das categorias **Destilados e Whisky** são contados em **doses** (o controle mostra "doses"); na coluna I é gravado doses × 50 (1 dose = 50, 2 doses = 100), apenas o número, sem unidade.
 - O espelho é recarregado após o lançamento.
 
 ## Relatório
