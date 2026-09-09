@@ -22,9 +22,11 @@ Quatro botões grandes, em português, prontos para uso no celular:
 
 Ao confirmar, cada item com quantidade maior que zero gera **uma linha** na aba `CONTROLE ENT|SAI 2025`, começando na primeira linha vazia, seguindo o padrão atual da planilha:
 
-| A | B | C | D | E | F | G |
-|---|---|---|---|---|---|---|
-| código | descrição | data (dd/mm/aa) | SAÍDA | BAR | BAR | quantidade |
+| A | C | D | E | G |
+|---|---|---|---|---|
+| código | data (dd/mm/aa) | SAÍDA | BAR | quantidade |
+
+**Não escreve nas colunas B e F** — essas ficam exatamente como estão na planilha (escrita em duas faixas: A:E e G).
 
 Se o envio à planilha falhar, o lançamento fica salvo no app marcado como "não enviado" e pode ser reenviado.
 
