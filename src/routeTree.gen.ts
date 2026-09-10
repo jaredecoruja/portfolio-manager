@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContagemRouteImport } from './routes/contagem'
 import { Route as RetiradasRouteImport } from './routes/retiradas'
+import { Route as ContagemLancarRouteImport } from './routes/contagem.lancar'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,34 +29,42 @@ const RetiradasRoute = RetiradasRouteImport.update({
   path: '/retiradas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContagemLancarRoute = ContagemLancarRouteImport.update({
+  id: '/lancar',
+  path: '/lancar',
+  getParentRoute: () => ContagemRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/contagem': typeof ContagemRoute
+  '/contagem': typeof ContagemRouteWithChildren
   '/retiradas': typeof RetiradasRoute
+  '/contagem/lancar': typeof ContagemLancarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/contagem': typeof ContagemRoute
+  '/contagem': typeof ContagemRouteWithChildren
   '/retiradas': typeof RetiradasRoute
+  '/contagem/lancar': typeof ContagemLancarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/contagem': typeof ContagemRoute
+  '/contagem': typeof ContagemRouteWithChildren
   '/retiradas': typeof RetiradasRoute
+  '/contagem/lancar': typeof ContagemLancarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contagem' | '/retiradas'
+  fullPaths: '/' | '/contagem' | '/retiradas' | '/contagem/lancar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contagem' | '/retiradas'
-  id: '__root__' | '/' | '/contagem' | '/retiradas'
+  to: '/' | '/contagem' | '/retiradas' | '/contagem/lancar'
+  id: '__root__' | '/' | '/contagem' | '/retiradas' | '/contagem/lancar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ContagemRoute: typeof ContagemRoute
+  ContagemRoute: typeof ContagemRouteWithChildren
   RetiradasRoute: typeof RetiradasRoute
 }
 
@@ -82,12 +91,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RetiradasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contagem/lancar': {
+      id: '/contagem/lancar'
+      path: '/lancar'
+      fullPath: '/contagem/lancar'
+      preLoaderRoute: typeof ContagemLancarRouteImport
+      parentRoute: typeof ContagemRoute
+    }
   }
 }
 
+interface ContagemRouteChildren {
+  ContagemLancarRoute: typeof ContagemLancarRoute
+}
+
+const ContagemRouteChildren: ContagemRouteChildren = {
+  ContagemLancarRoute: ContagemLancarRoute,
+}
+
+const ContagemRouteWithChildren = ContagemRoute._addFileChildren(
+  ContagemRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ContagemRoute: ContagemRoute,
+  ContagemRoute: ContagemRouteWithChildren,
   RetiradasRoute: RetiradasRoute,
 }
 export const routeTree = rootRouteImport
