@@ -10,33 +10,101 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdmRouteImport } from './routes/adm'
+import { Route as ContagemRouteImport } from './routes/contagem'
+import { Route as RelatorioRouteImport } from './routes/relatorio'
+import { Route as RetiradasRouteImport } from './routes/retiradas'
+import { Route as ContagemLancarRouteImport } from './routes/contagem.lancar'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdmRoute = AdmRouteImport.update({
+  id: '/adm',
+  path: '/adm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContagemRoute = ContagemRouteImport.update({
+  id: '/contagem',
+  path: '/contagem',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatorioRoute = RelatorioRouteImport.update({
+  id: '/relatorio',
+  path: '/relatorio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RetiradasRoute = RetiradasRouteImport.update({
+  id: '/retiradas',
+  path: '/retiradas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContagemLancarRoute = ContagemLancarRouteImport.update({
+  id: '/lancar',
+  path: '/lancar',
+  getParentRoute: () => ContagemRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/adm': typeof AdmRoute
+  '/contagem': typeof ContagemRouteWithChildren
+  '/relatorio': typeof RelatorioRoute
+  '/retiradas': typeof RetiradasRoute
+  '/contagem/lancar': typeof ContagemLancarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/adm': typeof AdmRoute
+  '/contagem': typeof ContagemRouteWithChildren
+  '/relatorio': typeof RelatorioRoute
+  '/retiradas': typeof RetiradasRoute
+  '/contagem/lancar': typeof ContagemLancarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/adm': typeof AdmRoute
+  '/contagem': typeof ContagemRouteWithChildren
+  '/relatorio': typeof RelatorioRoute
+  '/retiradas': typeof RetiradasRoute
+  '/contagem/lancar': typeof ContagemLancarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/adm'
+    | '/contagem'
+    | '/relatorio'
+    | '/retiradas'
+    | '/contagem/lancar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/adm'
+    | '/contagem'
+    | '/relatorio'
+    | '/retiradas'
+    | '/contagem/lancar'
+  id:
+    | '__root__'
+    | '/'
+    | '/adm'
+    | '/contagem'
+    | '/relatorio'
+    | '/retiradas'
+    | '/contagem/lancar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdmRoute: typeof AdmRoute
+  ContagemRoute: typeof ContagemRouteWithChildren
+  RelatorioRoute: typeof RelatorioRoute
+  RetiradasRoute: typeof RetiradasRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +116,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/adm': {
+      id: '/adm'
+      path: '/adm'
+      fullPath: '/adm'
+      preLoaderRoute: typeof AdmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contagem': {
+      id: '/contagem'
+      path: '/contagem'
+      fullPath: '/contagem'
+      preLoaderRoute: typeof ContagemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorio': {
+      id: '/relatorio'
+      path: '/relatorio'
+      fullPath: '/relatorio'
+      preLoaderRoute: typeof RelatorioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/retiradas': {
+      id: '/retiradas'
+      path: '/retiradas'
+      fullPath: '/retiradas'
+      preLoaderRoute: typeof RetiradasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contagem/lancar': {
+      id: '/contagem/lancar'
+      path: '/lancar'
+      fullPath: '/contagem/lancar'
+      preLoaderRoute: typeof ContagemLancarRouteImport
+      parentRoute: typeof ContagemRoute
+    }
   }
 }
 
+interface ContagemRouteChildren {
+  ContagemLancarRoute: typeof ContagemLancarRoute
+}
+
+const ContagemRouteChildren: ContagemRouteChildren = {
+  ContagemLancarRoute: ContagemLancarRoute,
+}
+
+const ContagemRouteWithChildren = ContagemRoute._addFileChildren(
+  ContagemRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdmRoute: AdmRoute,
+  ContagemRoute: ContagemRouteWithChildren,
+  RelatorioRoute: RelatorioRoute,
+  RetiradasRoute: RetiradasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
