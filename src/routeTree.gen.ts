@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContagemRouteImport } from './routes/contagem'
+import { Route as RetiradasRouteImport } from './routes/retiradas'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContagemRoute = ContagemRouteImport.update({
+  id: '/contagem',
+  path: '/contagem',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RetiradasRoute = RetiradasRouteImport.update({
+  id: '/retiradas',
+  path: '/retiradas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contagem': typeof ContagemRoute
+  '/retiradas': typeof RetiradasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contagem': typeof ContagemRoute
+  '/retiradas': typeof RetiradasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contagem': typeof ContagemRoute
+  '/retiradas': typeof RetiradasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/contagem' | '/retiradas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/contagem' | '/retiradas'
+  id: '__root__' | '/' | '/contagem' | '/retiradas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContagemRoute: typeof ContagemRoute
+  RetiradasRoute: typeof RetiradasRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contagem': {
+      id: '/contagem'
+      path: '/contagem'
+      fullPath: '/contagem'
+      preLoaderRoute: typeof ContagemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/retiradas': {
+      id: '/retiradas'
+      path: '/retiradas'
+      fullPath: '/retiradas'
+      preLoaderRoute: typeof RetiradasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContagemRoute: ContagemRoute,
+  RetiradasRoute: RetiradasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
