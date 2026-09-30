@@ -42,24 +42,69 @@ const plans = [
   {
     number: "01",
     title: "Presença Digital",
-    subtitle: "Para ser encontrado.",
-    price: "A partir de R$ 397",
-    features: ["Landing page personalizada", "Perfil da empresa no Google", "Organização dos canais digitais", "WhatsApp e localização"],
+    subtitle: "Fazer o negócio ser encontrado e apresentado profissionalmente na internet.",
+    ideal: "Ideal para quem ainda depende basicamente de WhatsApp, Instagram e indicação.",
+    price: "R$ 397 a R$ 697",
+    priceLabel: "Faixa inicial",
+    features: [
+      "Landing page personalizada",
+      "Perfil da empresa no Google",
+      "Organização das informações do negócio",
+      "Botão direto para WhatsApp",
+      "Link para Instagram",
+      "Localização e mapa",
+      "Horários de funcionamento",
+      "Apresentação de produtos e serviços",
+      "Orientação básica para fotos e avaliações",
+    ],
+    receives: [
+      "Uma página própria para o negócio",
+      "Presença organizada no Google",
+      "Canais digitais conectados",
+    ],
   },
   {
     number: "02",
     title: "Gestão do Negócio",
-    subtitle: "Para organizar a operação.",
-    price: "A partir de R$ 897",
+    subtitle: "Ajudar o comerciante a deixar de depender de caderno, planilhas espalhadas ou controles manuais.",
+    ideal: "Ideal para bomboniere, depósito, mercadinho ou pequeno comércio que já possui movimentação de produtos.",
+    price: "R$ 897 a R$ 1.497",
+    priceLabel: "Faixa inicial",
     featured: true,
-    features: ["Cadastro de produtos", "Controle de estoque", "Entradas e saídas", "Vendas e despesas", "Painel de indicadores"],
+    features: [
+      "Cadastro de produtos",
+      "Categorias de produtos",
+      "Preço de compra e preço de venda",
+      "Margem estimada",
+      "Entradas e saídas de estoque",
+      "Estoque atual e estoque mínimo",
+      "Alertas de estoque baixo",
+      "Registro e histórico de vendas",
+      "Produtos mais vendidos",
+      "Acompanhamento de faturamento",
+      "Registro e categorização de despesas",
+      "Dashboard com vendas, despesas, estoque e resultado estimado",
+    ],
   },
   {
     number: "03",
     title: "Solução Personalizada",
-    subtitle: "Para uma operação sob medida.",
+    subtitle: "Criar uma ferramenta adaptada ao funcionamento específico da empresa.",
+    ideal: "Em vez de o cliente mudar a maneira como trabalha para caber no sistema, adaptamos a solução ao processo dele.",
     price: "Orçamento personalizado",
-    features: ["Fluxo desenhado para o negócio", "Telas e regras personalizadas", "Acesso pelo celular", "Evolução por etapas"],
+    priceLabel: "Projeto sob medida",
+    features: [
+      "Tudo do Plano 2",
+      "Fluxo personalizado",
+      "Telas específicas",
+      "Usuários e permissões",
+      "Relatórios personalizados",
+      "Indicadores específicos",
+      "Integrações",
+      "Recursos adicionais",
+      "Acesso pelo celular",
+      "Evolução por etapas",
+    ],
   },
 ];
 
@@ -184,18 +229,67 @@ function Home() {
 
       <section id="planos" className="px-5 py-20 lg:px-8 lg:py-28">
         <div className="mx-auto max-w-6xl">
-          <div className="max-w-2xl"><p className="text-sm font-bold uppercase tracking-[.18em] text-[#78b82a]">Três caminhos</p><h2 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Escolha o que faz sentido para o seu momento.</h2></div>
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          <div className="max-w-3xl">
+            <p className="text-sm font-bold uppercase tracking-[.18em] text-[#78b82a]">Três caminhos</p>
+            <h2 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Escolha o que faz sentido para o seu momento.</h2>
+            <p className="mt-5 text-lg leading-7 text-[#10251c]/60">Cada negócio está em um momento diferente. A proposta é começar pelo que realmente resolve a necessidade de agora e evoluir conforme a empresa cresce.</p>
+          </div>
+
+          <div className="mt-12 grid items-start gap-5 lg:grid-cols-3">
             {plans.map((plan) => (
-              <article key={plan.number} className={`relative rounded-3xl border p-7 ${plan.featured ? "border-[#78b82a] bg-[#10251c] text-white shadow-xl" : "border-[#10251c]/10 bg-white"}`}>
-                {plan.featured && <div className="absolute right-5 top-5 rounded-full bg-[#78b82a] px-3 py-1 text-xs font-bold text-[#10251c]">Mais completo</div>}
+              <article key={plan.number} className={`relative rounded-3xl border p-7 ${plan.featured ? "border-[#78b82a] bg-[#10251c] text-white shadow-xl lg:-translate-y-2" : "border-[#10251c]/10 bg-white"}`}>
+                {plan.featured && <div className="absolute right-5 top-5 rounded-full bg-[#78b82a] px-3 py-1 text-xs font-bold text-[#10251c]">⭐ Mais procurado</div>}
                 <p className={`text-sm font-bold ${plan.featured ? "text-[#9bd451]" : "text-[#78b82a]"}`}>{plan.number}</p>
-                <h3 className="mt-5 text-2xl font-bold">{plan.title}</h3><p className={`mt-2 ${plan.featured ? "text-white/60" : "text-[#10251c]/55"}`}>{plan.subtitle}</p>
-                <p className="mt-8 text-xl font-bold">{plan.price}</p>
-                <ul className="mt-7 space-y-3">{plan.features.map((feature) => <li key={feature} className="flex gap-3 text-sm"><Check className={`mt-0.5 h-4 w-4 shrink-0 ${plan.featured ? "text-[#9bd451]" : "text-[#78b82a]"}`} />{feature}</li>)}</ul>
-                <a href="#contato" className={`mt-8 flex items-center justify-center rounded-full px-5 py-3 font-bold ${plan.featured ? "bg-[#78b82a] text-[#10251c]" : "border border-[#10251c]/15"}`}>Quero saber mais</a>
+                <h3 className="mt-5 pr-24 text-2xl font-bold">{plan.title}</h3>
+                <p className={`mt-3 text-sm leading-6 ${plan.featured ? "text-white/65" : "text-[#10251c]/60"}`}>{plan.subtitle}</p>
+                <div className={`mt-5 rounded-2xl p-4 ${plan.featured ? "bg-white/[.06]" : "bg-[#f6f7f2]"}`}>
+                  <p className={`text-xs font-bold uppercase tracking-wide ${plan.featured ? "text-[#9bd451]" : "text-[#78b82a]"}`}>Ideal para</p>
+                  <p className={`mt-2 text-sm leading-6 ${plan.featured ? "text-white/70" : "text-[#10251c]/65"}`}>{plan.ideal}</p>
+                </div>
+                <p className={`mt-7 text-xs font-semibold uppercase tracking-wide ${plan.featured ? "text-white/45" : "text-[#10251c]/45"}`}>{plan.priceLabel}</p>
+                <p className="mt-1 text-xl font-bold">{plan.price}</p>
+
+                <div className="mt-7">
+                  <p className={`text-sm font-bold ${plan.featured ? "text-white" : "text-[#10251c]"}`}>O que inclui</p>
+                  <ul className="mt-4 space-y-3">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex gap-3 text-sm leading-5">
+                        <Check className={`mt-0.5 h-4 w-4 shrink-0 ${plan.featured ? "text-[#9bd451]" : "text-[#78b82a]"}`} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {plan.receives && (
+                  <div className={`mt-7 border-t pt-6 ${plan.featured ? "border-white/10" : "border-[#10251c]/10"}`}>
+                    <p className={`text-sm font-bold ${plan.featured ? "text-white" : "text-[#10251c]"}`}>O cliente recebe</p>
+                    <ul className="mt-4 space-y-3">
+                      {plan.receives.map((item) => <li key={item} className="flex gap-3 text-sm"><Check className={`mt-0.5 h-4 w-4 shrink-0 ${plan.featured ? "text-[#9bd451]" : "text-[#78b82a]"}`} />{item}</li>)}
+                    </ul>
+                  </div>
+                )}
+
+                <a href="#contato" className={`mt-8 flex items-center justify-center gap-2 rounded-full px-5 py-3 font-bold ${plan.featured ? "bg-[#78b82a] text-[#10251c]" : "border border-[#10251c]/15"}`}>Quero saber mais <ArrowRight className="h-4 w-4" /></a>
               </article>
             ))}
+          </div>
+
+          <div className="mt-8 rounded-3xl border border-[#78b82a]/30 bg-[#78b82a]/10 p-6 sm:p-8">
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div className="max-w-3xl">
+                <div className="flex items-center gap-3"><div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-[#5f971d] shadow-sm"><Zap className="h-5 w-5" /></div><div><p className="text-xs font-bold uppercase tracking-[.16em] text-[#5f971d]">Depois da implantação</p><h3 className="text-2xl font-bold">Suporte &amp; Evolução</h3></div></div>
+                <p className="mt-4 leading-7 text-[#10251c]/65">A solução pode continuar evoluindo sem obrigar o cliente a assumir uma mensalidade alta desde o começo.</p>
+                <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium text-[#10251c]/70">
+                  {["Suporte", "Pequenas correções", "Ajustes", "Manutenção", "Acompanhamento", "Pequenas melhorias"].map((item) => <span key={item} className="flex items-center gap-2"><Check className="h-4 w-4 text-[#5f971d]" />{item}</span>)}
+                </div>
+                <p className="mt-5 text-sm text-[#10251c]/55">Projetos maiores podem ter um plano mensal dimensionado conforme a necessidade.</p>
+              </div>
+              <div className="shrink-0 rounded-2xl bg-[#10251c] px-6 py-5 text-center text-white">
+                <p className="text-xs font-semibold uppercase tracking-wide text-white/50">A partir de</p>
+                <p className="mt-1 text-3xl font-bold">R$ 79<span className="text-base font-medium text-white/55">/mês</span></p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
