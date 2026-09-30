@@ -14,7 +14,7 @@ const categories = [
 
 const products = [
   ["Fini Tubes Morango", "Balas & Doces", "R$ 8,90", "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=700&q=85"],
-  ["Chocolate Crocante", "Chocolates", "R$ 6,50", "https://images.unsplash.com/photo-1575377222312-dd1a5d2d4e5d?auto=format&fit=crop&w=700&q=85"],
+  ["Chocolate Crocante", "Chocolates", "R$ 6,50", "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=700&q=85"],
   ["Refrigerante Lata", "Bebidas", "R$ 5,00", "https://images.unsplash.com/photo-1629203849820-fdd70d49c38e?auto=format&fit=crop&w=700&q=85"],
   ["Batata Chips", "Salgadinhos", "R$ 9,90", "https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=700&q=85"],
   ["Cookie Recheado", "Biscoitos", "R$ 7,90", "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=700&q=85"],
