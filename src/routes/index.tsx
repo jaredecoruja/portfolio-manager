@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, BarChart3, Check, Globe2, Package, Smartphone, TrendingUp, Wallet, Zap } from "lucide-react";
 
+const whatsappUrl = "https://wa.me/5581989700155?text=Ol%C3%A1!%20Conheci%20a%20JaDigital%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20solu%C3%A7%C3%B5es.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -105,7 +107,7 @@ function Home() {
           <nav className="hidden items-center gap-7 text-sm font-medium md:flex">
             <a href="#solucoes">Soluções</a><a href="#planos">Ofertas</a><a href="#processo">Como funciona</a>
           </nav>
-          <a href="#contato" className="rounded-full bg-[#10251c] px-5 py-2.5 text-sm font-semibold text-white">Falar comigo</a>
+          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="rounded-full bg-[#10251c] px-5 py-2.5 text-sm font-semibold text-white">Falar comigo</a>
         </div>
       </header>
 
@@ -141,7 +143,7 @@ function Home() {
 
       <section id="processo" className="border-y border-[#10251c]/10 bg-white/50 px-5 py-20 lg:px-8 lg:py-24"><div className="mx-auto max-w-6xl"><div className="max-w-2xl"><p className="text-sm font-bold uppercase tracking-[.18em] text-[#78b82a]">Como funciona</p><h2 className="mt-3 text-4xl font-bold tracking-tight">Entender. Construir. Evoluir.</h2></div><div className="mt-10 grid gap-4 md:grid-cols-4">{[["01","Entender","Conversamos sobre o negócio e o problema que precisa ser resolvido."],["02","Definir","Escolhemos a solução, o escopo e o que realmente faz sentido."],["03","Construir","Desenvolvemos e organizamos a ferramenta ou presença digital."],["04","Evoluir","Após a entrega, a solução pode receber ajustes e melhorias."]].map(([n,t,d])=><article key={n} className="rounded-3xl bg-[#10251c] p-6 text-white"><p className="text-sm font-bold text-[#9bd451]">{n}</p><h3 className="mt-4 text-xl font-bold">{t}</h3><p className="mt-3 text-sm leading-6 text-white/60">{d}</p></article>)}</div></div></section>
 
-      <section id="contato" className="px-5 py-20 lg:px-8 lg:py-28"><div className="mx-auto max-w-4xl rounded-[2rem] bg-[#10251c] p-8 text-center text-white sm:p-12"><p className="text-sm font-bold uppercase tracking-[.18em] text-[#9bd451]">Vamos conversar</p><h2 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Qual problema você gostaria de resolver?</h2><p className="mx-auto mt-5 max-w-2xl leading-7 text-white/60">A primeira conversa serve para entender sua realidade e identificar qual caminho faz sentido para o seu negócio.</p><a href="https://wa.me/5581980000000" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#78b82a] px-7 py-3.5 font-bold text-[#10251c]">Falar pelo WhatsApp <ArrowRight className="h-4 w-4" /></a></div></section>
+      <section id="contato" className="px-5 py-20 lg:px-8 lg:py-28"><div className="mx-auto max-w-4xl rounded-[2rem] bg-[#10251c] p-8 text-center text-white sm:p-12"><p className="text-sm font-bold uppercase tracking-[.18em] text-[#9bd451]">Vamos conversar</p><h2 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Qual problema você gostaria de resolver?</h2><p className="mx-auto mt-5 max-w-2xl leading-7 text-white/60">A primeira conversa serve para entender sua realidade e identificar qual caminho faz sentido para o seu negócio.</p><a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[#78b82a] px-7 py-3.5 font-bold text-[#10251c]">Falar pelo WhatsApp <ArrowRight className="h-4 w-4" /></a></div></section>
 
       <footer className="border-t border-[#10251c]/10 px-5 py-8 lg:px-8"><div className="mx-auto flex max-w-6xl flex-col gap-3 text-sm text-[#10251c]/55 sm:flex-row sm:items-center sm:justify-between"><p>© 2026 JaDigital. Soluções digitais para pequenos negócios.</p><p>Presença digital • Controle operacional • Soluções personalizadas</p></div></footer>
     </main>
@@ -160,7 +162,7 @@ function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
     {plan.receives && <div className={`mt-7 border-t pt-6 ${plan.featured ? "border-white/10" : "border-[#10251c]/10"}`}><p className="text-sm font-bold">O cliente recebe</p><ul className="mt-4 space-y-3">{plan.receives.map(item=><li key={item} className="flex gap-3 text-sm"><Check className={`mt-0.5 h-4 w-4 shrink-0 ${plan.featured ? "text-[#9bd451]" : "text-[#78b82a]"}`} />{item}</li>)}</ul></div>}
     <div className={`mt-7 rounded-2xl p-4 ${plan.featured ? "bg-[#78b82a]/10" : "bg-[#78b82a]/8"}`}><p className={`text-xs font-bold uppercase tracking-wide ${plan.featured ? "text-[#9bd451]" : "text-[#5f971d]"}`}>Diferencial JaDigital</p><p className={`mt-2 text-sm leading-6 ${plan.featured ? "text-white/75" : "text-[#10251c]/65"}`}>{plan.difference}</p></div>
     {plan.note && <div className={`mt-4 rounded-2xl border p-4 text-xs leading-5 ${plan.featured ? "border-white/10 text-white/55" : "border-[#10251c]/10 text-[#10251c]/55"}`}><strong>Importante:</strong> {plan.note}</div>}
-    <a href={plan.number === "01" ? "/demo-bomboniere" : plan.number === "02" ? "/demo-gestao" : "#contato"} className={`mt-8 flex items-center justify-center gap-2 rounded-full px-5 py-3 font-bold ${plan.featured ? "bg-[#78b82a] text-[#10251c]" : "border border-[#10251c]/15"}`}>{plan.number === "01" ? "Ver exemplo da página" : plan.number === "02" ? "Ver demonstração do sistema" : "Quero saber mais"}<ArrowRight className="h-4 w-4" /></a>
+    <a href={plan.number === "01" ? "/demo-bomboniere" : plan.number === "02" ? "/demo-gestao" : whatsappUrl} target={plan.number === "03" ? "_blank" : undefined} rel={plan.number === "03" ? "noreferrer" : undefined} className={`mt-8 flex items-center justify-center gap-2 rounded-full px-5 py-3 font-bold ${plan.featured ? "bg-[#78b82a] text-[#10251c]" : "border border-[#10251c]/15"}`}>{plan.number === "01" ? "Ver exemplo da página" : plan.number === "02" ? "Ver demonstração do sistema" : "Quero saber mais"}<ArrowRight className="h-4 w-4" /></a>
   </article>;
 }
 
